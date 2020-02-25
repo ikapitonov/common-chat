@@ -1,0 +1,63 @@
+#bnt-send {
+    cursor: pointer;
+    font-size: 18pt;
+}
+
+.chat-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    flex: 1 0 auto;
+}
+
+.message-card {
+    box-shadow: 0px 5px 35px 9px #ccc;
+    min-width: 300px;
+}
+
+.message-header {
+    background-color: #5A5EB9;
+    color: white;
+    font-size: 16px;
+}
+
+.user_header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.user_header_name {
+    display: block;
+    max-width: 170px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.message-header-wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.message-date {
+    color: #fafafa;
+    font-size: 12px;
+}
+
+.message-text {
+    border: none;
+    font-size: 14px;
+}
+
+.badge-admin {
+    background-color: white;
+    color: #5A5EB9;
+}
+
+#users-counter {
+    color: white;
+    background-color: #5A5EB9;
+}

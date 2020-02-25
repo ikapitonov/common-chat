@@ -1,0 +1,125 @@
+<th:block th:include="/web/includes/header"></th:block>
+
+<title>Настройка</title>
+
+<h3 class="text-center mb-3">Редактирование аккаунта</h3>
+
+<div th:if="${#request.getParameter('change') == 'true'}" class="alert alert-success" role="alert">Данные успешно изменены!</div>
+<div th:if="${error}" class="alert alert-danger" role="alert" th:text="${error}"></div>
+
+<div id="accordion" class="mt-2">
+    <div class="card mt-1">
+        <div class="card-header" id="headingOne">
+            <h5 class="mb-0">
+                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    Изменение имени
+                </button>
+            </h5>
+        </div>
+
+        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+            <div class="card-body">
+                <form th:action="@{/account}" method="POST">
+                    <div class="form-group">
+                        <label for="input_name">Введите ваше имя</label>
+                        <input type="text" name="name" class="form-control" id="input_name" th:value="${input_name}"  placeholder="Имя">
+                        <small class="form-text text-muted">От 2 до 25 символов</small>
+                    </div>
+                    <div class="row justify-content-center align-items-center">
+                        <button type="submit" class="btn btn-primary">Сохранить</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="card mt-1">
+        <div class="card-header" id="headingTwo">
+            <h5 class="mb-0">
+                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    Изменение сайта
+                </button>
+            </h5>
+        </div>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+            <div class="card-body">
+                <form th:action="@{/account}" method="POST">
+                    <div class="form-group">
+                        <label for="input_url">Введите url вашего сайта</label>
+                        <input type="text" name="url" class="form-control" id="input_url" th:value="${input_url}" placeholder="Url вашего сайта">
+                        <small class="form-text text-muted">Начиная с http:// или https://, например, "http://example.com"</small>
+                    </div>
+                    <div class="row justify-content-center align-items-center">
+                        <button type="submit" class="btn btn-primary">Сохранить</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="card mt-1">
+        <div class="card-header" id="headingThree">
+            <h5 class="mb-0">
+                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    Изменение пароля
+                </button>
+            </h5>
+        </div>
+        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+            <div class="card-body">
+                <form th:action="@{/account}" method="POST">
+                    <div class="form-group">
+                        <label for="input_password">Введите пароль</label>
+                        <input type="password" name="password"  class="form-control" id="input_password" placeholder="Пароль">
+                        <small class="form-text text-muted">От 6 до 20 символов</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="input_retry_password">Повторите пароль</label>
+                        <input type="password" name="retry_password" class="form-control" id="input_retry_password" placeholder="Повторите пароль">
+                    </div>
+                    <div class="row justify-content-center align-items-center">
+                        <button type="submit" class="btn btn-primary">Сохранить</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<ul class="list-group mt-3">
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+        <span th:if="${input_active == 1}" class="badge badge-success">Чат включен</span>
+        <span th:if="${input_active == 0}" class="badge badge-danger">Чат выключен</span>
+        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModalLong">Изменить</button>
+    </li>
+</ul>
+
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Активность аккаунта</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                <form method="POST" th:action="@{/active}">
+                    <div th:if="${input_active == 1}">
+                        <input type="hidden" name="active" value="0">
+                        <button type="submit" class="btn btn-danger">Выключить</button>
+                    </div>
+                    <div th:if="${input_active == 0}">
+                        <input type="hidden" name="active" value="1">
+                        <button type="submit" class="btn btn-success">Включить</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<th:block th:include="/web/includes/scripts"></th:block>
+
+<th:block th:include="/web/includes/footer"></th:block>

@@ -1,0 +1,78 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Material+Icons+Round" rel="stylesheet">
+    <link rel="stylesheet" href="window/window.css"></link>
+
+    <title th:utext="${title}"></title>
+</head>
+<body style="height: 100%; background-color: #EFEFEF;">
+
+<div class="container" style="max-width: 500px;">
+
+    <div class="chat-container">
+        <div class="chat-items p-2">
+            <div th:if="${messages}">
+
+                <div th:if="${#lists.size(messages) == 50}">
+                    <div class="chLodader row justify-content-center align-items-center mb-2">
+                        <div class="spinner-border" style="color: #5A5EB9;" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                    </div>
+                    <div class="messageLoader">
+                        <div id="messageLoader50"></div>
+                    </div>
+                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+                    <script src="window/loader.js"></script>
+                </div>
+                <div th:each="MessageItem, state : ${messages}" class="card mb-3 message-card">
+                    <div class="card-header p-2 message-header">
+                        <div class="message-header-wrap">
+                            <div class="user_header">
+                                <span class="user_header_name" th:utext="${MessageItem.username}"></span>
+                                <span th:if="${MessageItem.admin}">
+                                    <span class="badge ml-2 badge-warning">Admin</span>
+                                </span>
+                                <span th:unless="${MessageItem.admin}">
+                                    <span class="badge ml-2 badge-admin">user</span>
+                                </span>
+                            </div>
+                            <div><small class="message-date" th:utext="${MessageItem.date}"></small></div>
+                        </div>
+                    </div>
+                    <div class="card-body text-dark p-2 message-text" th:utext="${MessageItem.message}"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row justify-content-center align-items-center mb-2">Пользователей: <span class="badge ml-2" id="users-counter" th:utext="${counter}"></span></div>
+
+        <div style="width: 10px; height: 45px;"></div>
+    </div>
+
+    <div id="chat-text" style="position: fixed; bottom: 0; margin: 0 auto; left: 0; right: 0; max-width: 780px;">
+        <div class="input-group input-group-sm mb-0 p-2" style="background-color: white;">
+            <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" id="text-input" style="height: 35px;">
+            <div class="input-group-prepend" style="height: 35px;">
+                <button id="bnt-send" class="input-group-text"><i class="material-icons-round" style="color: #5A5EB9;">send</i></button>
+            </div>
+        </div>
+    </div>
+
+
+    <div style="display: none" id="username" th:utext="${username}"></div>
+    <div style="display: none" id="sitename" th:utext="${site}"></div>
+    <div style="display: none" id="token" th:utext="${token}"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.4/sockjs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+    <script src="window/window.js"></script>
+
+</body>
+</html>

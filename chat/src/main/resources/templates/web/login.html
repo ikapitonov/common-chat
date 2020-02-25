@@ -1,0 +1,26 @@
+<th:block th:include="/web/includes/header"></th:block>
+
+<title>Вход</title>
+
+<h3 class="text-center mb-3">Вход</h3>
+
+<div th:if="${#request.getParameter('error') == 'true'}" class="alert alert-danger" role="alert">Возникла ошибка. Попробуйте еще раз</div>
+<div th:if="${#request.getParameter('reg') == 'true'}" class="alert alert-success" role="alert">Ваш аккаунт успешно подтвержден!</div>
+
+<form name='f' th:action="@{/j_spring_security_check}" method='POST'>
+    <div class="form-group">
+        <label for="input_email">Введите email адрес</label>
+        <input type="email" class="form-control" id="input_email" name='username' value='' aria-describedby="emailHelp" placeholder="Email адрес">
+    </div>
+    <div class="form-group">
+        <label for="input_password">Введите пароль</label>
+        <input type='password' name='password' class="form-control" id="input_password" placeholder="Пароль">
+    </div>
+    <div class="row justify-content-center align-items-center">
+        <button type="submit" class="btn btn-primary">Войти</button>
+    </div>
+</form>
+
+<th:block th:include="/web/includes/scripts"></th:block>
+
+<th:block th:include="/web/includes/footer"></th:block>

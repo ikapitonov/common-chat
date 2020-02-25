@@ -1,0 +1,40 @@
+<th:block th:include="/web/includes/header"></th:block>
+
+<title>Регистрация</title>
+
+<h3 class="text-center mb-3">Регистрация</h3>
+
+<div th:if="${error}" class="alert alert-danger" role="alert" th:text="${error}"></div>
+
+<form th:action="@{/signup}" method="POST">
+    <div class="form-group">
+        <label for="input_name">Введите ваше имя</label>
+        <input type="text" name="name" class="form-control" id="input_name" th:value="${input_name}"  placeholder="Имя">
+        <small class="form-text text-muted">От 2 до 25 символов</small>
+    </div>
+    <div class="form-group">
+        <label for="input_url">Введите url вашего сайта</label>
+        <input type="text" name="url" class="form-control" id="input_url" th:value="${input_url}" placeholder="Url вашего сайта">
+        <small class="form-text text-muted">Начиная с http:// или https://, например, "http://example.com"</small>
+    </div>
+    <div class="form-group">
+        <label for="input_email">Введите email адрес</label>
+        <input type="email" name="email" class="form-control" id="input_email" th:value="${input_email}" placeholder="Email адрес">
+    </div>
+    <div class="form-group">
+        <label for="input_password">Введите пароль</label>
+        <input type="password" name="password"  class="form-control" id="input_password" placeholder="Пароль">
+        <small class="form-text text-muted">От 6 до 20 символов</small>
+    </div>
+    <div class="form-group">
+        <label for="input_retry_password">Повторите пароль</label>
+        <input type="password" name="retry_password" class="form-control" id="input_retry_password" placeholder="Повторите пароль">
+    </div>
+    <div class="row justify-content-center align-items-center">
+        <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
+    </div>
+</form>
+
+<th:block th:include="/web/includes/scripts"></th:block>
+
+<th:block th:include="/web/includes/footer"></th:block>

@@ -1,0 +1,17 @@
+<div th:each="MessageItem, state : ${messages}" class="card mb-3 message-card">
+    <div class="card-header p-2 message-header">
+        <div class="message-header-wrap">
+            <div class="user_header">
+                <span class="user_header_name" th:utext="${MessageItem.username}"></span>
+                <span th:if="${MessageItem.admin}">
+                                    <span class="badge ml-2 badge-warning">Admin</span>
+                                </span>
+                <span th:unless="${MessageItem.admin}">
+                                    <span class="badge ml-2 badge-admin">user</span>
+                                </span>
+            </div>
+            <div><small class="message-date" th:utext="${MessageItem.date}"></small></div>
+        </div>
+    </div>
+    <div class="card-body text-dark p-2 message-text" th:utext="${MessageItem.message}"></div>
+</div>

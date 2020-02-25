@@ -1,0 +1,172 @@
+#center-text {
+    display: flex;
+    flex: 1;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+    height:100%;
+
+}
+#CommonChat-circle {
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+    background: #5A5EB9;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0px 3px 16px 0px rgba(0, 0, 0, 0.6), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+}
+
+#CommonChat-box {
+    display:none;
+    background-color: #efefef;
+    position:fixed;
+    right:30px;
+    bottom:50px;
+    width: 350px;
+    height: 500px;
+    border-radius:5px;
+    font-family: Arial;
+}
+#CommonChat-toggle {
+    float:right;
+    margin-right:15px;
+    cursor:pointer;
+}
+#CommonChat-header {
+    background: #5A5EB9;
+    height:50px;
+    border-top-left-radius:5px;
+    border-top-right-radius:5px;
+    color:white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size:20px;
+    position: relative;
+}
+#CommonChat-toggle {
+    position: absolute;
+    right: 10px;
+}
+
+#CommonChat-body {
+    position: relative;
+    /*height:370px;*/
+    height: 450px;
+    background-color: #efefef;
+    border:1px solid #ccc;
+    overflow: hidden;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+#CommonChat-hello {
+    width: 100%;
+    height: 450px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #efefef;
+}
+
+#CommonChat-hello button {
+    margin-top: 20px;
+    background-color: #5A5EB9;
+    color: white;
+    cursor: pointer;
+    outline: none;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14pt;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+#CommonChat-iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+}
+
+
+
+
+
+#CommonChat-group {
+  position: relative;
+}
+
+#CommonChat-input {
+  font-size: 16px;
+  padding: 10px;
+  display: block;
+  width: 300px;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  background-color: #efefef;
+}
+#CommonChat-input:focus {
+  outline: none;
+}
+
+
+
+
+
+
+
+
+
+#CommonChat-label {
+  color: #999;
+  font-size: 18px;
+  position: absolute;
+  pointer-events: none;
+  left: 10px;
+  top: 15px;
+  transition: 0.2s ease all;
+  -moz-transition: 0.2s ease all;
+  -webkit-transition: 0.2s ease all;
+}
+
+#CommonChat-input:focus ~ #CommonChat-label, #CommonChat-input:valid ~ #CommonChat-label {
+  top: -15px;
+  font-size: 14px;
+  color: #5264AE;
+}
+
+
+#CommonChat-bar {
+  position: relative;
+  display: block;
+  width: 100%;
+}
+#CommonChat-bar:before, #CommonChat-bar:after {
+  content: "";
+  height: 2px;
+  width: 0;
+  bottom: 0;
+  position: absolute;
+  background: #5264AE;
+  transition: 0.2s ease all;
+  -moz-transition: 0.2s ease all;
+  -webkit-transition: 0.2s ease all;
+}
+#CommonChat-bar:before {
+  left: 50%;
+}
+#CommonChat-bar:after {
+  right: 50%;
+}
+
+
+#CommonChat-input:focus ~ #CommonChat-bar:before,
+#CommonChat-input:focus ~ #CommonChat-bar:after {
+  width: 50%;
+}
